@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text-m Tests</title>
+    <script src="./../node_modules/list-m/esm.js"></script>
+</head>
+<body>
+    There are many semantic elements : https://html.spec.whatwg.org/multipage/text-level-semantics.html#text-level-semantics
+    <template id="multi-writing">
+        <div>{t-writing}</div>
+    </template>
+    <template id="inline-element">
+        <h1>{t-element}</h1>
+        <pre>
+            {t-textm}
+        </pre>
+        <list-m
+            template="multi-writing"
+            source="" 
+        ></list-m>
+        <pre>
+            {t-html}
+        </pre>
+    </template>
+    <script type="application/json" id="data">
+        [
+            {
+                "defs": [
+                    {"writing": "test"}
+                ],
+                "element": "em",
+                "textm": "*stress emphasis* OR _stress emphasis_ OR /em:stress emphasis/",
+                "html": "&lt;abbr title=&quot;Hyper Text Markup Language&quot;>HTML&lt;/abbr>"
+            },
+            {
+                "element": "abbr",
+                "textm": "*[abbreviation]: title or explanation",
+                "html": "&lt;abbr title=&quot;Hyper Text Markup Language&quot;>HTML&lt;/abbr>"
+            }
+        ]
+    </script>
+    <list-m
+        template="inline-element"
+        source="data"
+    ></list-m>
+
+    <hr />
+    <abbr title="Hyper Text Markup Language">HTML</abbr>
+    
+</body>
+</html>
