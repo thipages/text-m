@@ -15,8 +15,5 @@
     "url": "https://github.com/thipages/text-m.git"
   },
   "author": "Thierry Pagès",
-  "license": "MIT",
-  "devDependencies": {
-    "list-m": "^0.1.1"
-  }
+  "license": "MIT"
 }
