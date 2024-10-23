@@ -33,7 +33,7 @@ const r = render([
     '/a[google.com, _blank]:Hello/',
     '/abbr[with escaped comma \\,]:Hello/',
     '/em.red:Hello/\\/<', // special characters / and <
-    '\n\n/em.red:Hello/\nem.blue:Hello/'
+    '\n\n/em.red:Hello/\nj\n\nem.blue:Hello/'
 
 ].join('\n'))
 console.log(r)

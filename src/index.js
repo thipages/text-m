@@ -36,12 +36,13 @@ function getHtmlAttributes(element, attributes, evilChar) {
 }
 function normalizeNewlines(input) {
     return input
-        .replace(/^\s*\n*/, '')
-        .replace(/\s*\n*$/, '')
-        .replace(/\n+/, '\n')
+        .replace(/^\s*\n*/, '') // remove top newlines
+        .replace(/\s*\n*$/, '') // remove end newlines
+        .replace(/^\s*\n/g, '\n') // clean newlines
+        .replace(/\n+/g, '\n') // down to mono newlines
 }
 function addParagraphs(input) {
-    return input.split('\n\n').map(v => wrap(v)).join('\n')
+    return input.split('\n').map(v => wrap(v)).join('\n')
 }
 function wrap(content, el='p') {
     return `<${el}>${content}</${el}>`
