@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text-m Tests</title>
+    <script type="module" src="./../src/index.js"></script>
+    <style>
+        .blue {color:blue;}
+        .orange {color:orange;}
+        .container {display:flex;gap:1rem;}
+    </style>
+</head>
+<body>
+    <text-m class="container">
+        I must say I /em:adore/ lemonade.
+        --- I must say I /em.blue:adore/ lemonade.
+
+        The case /cite:Hugo v. Danielle/ is relevant here.
+        --- The case /cite.orange:Hugo v. Danielle/ is relevant here.
+
+        Elderflower cordial, with one /mark:part/ cordial to ten /mark:part/s water, stands a/mark:part/ from the rest.
+
+        Organic food in Ireland is certified by the /abbr[Irish Organic Farmers and Growers Association]:IOFGA/.
+    </text-m>
+</body>
+</html>

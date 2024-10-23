@@ -15,5 +15,5 @@ export const tlsAttributes = {
 }
 export const evilChars = /\x01(\d)/g
 // "/(element)?.(class)??[attributes]?:text/"
-export const testmRegExp = /\/([^\.\[:]*)(\.([^\[:]*)){0,1}(\[(.*)\]){0,1}:([^\/]*)\//gm
+export const testmRegExp = /\/([^\.\[:]*)(\.([^\[:]*)){0,1}(\[(.*)\]){0,1}:([^\/]*)\//g
 export const SLASH = '&#x2F;'

@@ -1,5 +1,5 @@
 import { testmRegExp } from "../src/const.js"
-import { render } from "../src/index.js"
+import render from "../src/render.js"
 import assert from 'node:assert'
 const test1Expected = [
     ['em', undefined , undefined,'text'],
