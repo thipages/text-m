@@ -10,8 +10,9 @@ Boolean `level-up` attribute allows to replace a fresh `text-m` custom-element b
 
 - minimal: `|em/emphasis/`
 - with class: `|em.red/emphasis/`
-- with shotcuts attributes: `|a[mysite.com,_blank]/link text/`
-- with named attributes: `|a[#href=mysite.com #target=_blank]/link text/`
+- with shortcuts attributes: `|a[mysite.com,_blank]/link text/` (comma delimiter)
+- with named attributes: `|a[#href=mysite.com #target=_blank]/link text/`(space delimiter)
+- class and attributes can be mixed: `|a.red[mysite.com]/link text/` 
 
 ## Examples
 
