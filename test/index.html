@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>text-m Tests</title>
+    <script
+        data-imports="html-parsed-element"
+        src="https://esm.run/data-imports"
+    ></script>
     <script type="module" src="./../src/index.js"></script>
     <style>
         .blue {color:blue;}
@@ -13,15 +17,18 @@
 </head>
 <body>
     <text-m class="container">
-        I must say I /em:adore/ lemonade.
-        --- I must say I /em.blue:adore/ lemonade.
 
-        The case /cite:Hugo v. Danielle/ is relevant here.
-        --- The case /cite.orange:Hugo v. Danielle/ is relevant here.
+        I must say I |em/adore/ lemonade.
+        --- I must say I |em.blue/adore/ lemonade.
 
-        Elderflower cordial, with one /mark:part/ cordial to ten /mark:part/s water, stands a/mark:part/ from the rest.
+        I must say I |span.blue/adore/ lemonade.
 
-        Organic food in Ireland is certified by the /abbr[Irish Organic Farmers and Growers Association]:IOFGA/.
+        The case |cite/Hugo v. Danielle/ is relevant here.
+        --- The case |cite.orange/Hugo v. Danielle/ is relevant here.
+
+        Elderflower cordial, with one |mark/part/ cordial to ten |mark/part/s water, stands a|mark/part/ from the rest.
+
+        Organic food in Ireland is certified by the |abbr[Irish Organic Farmers and Growers Association]/IOFGA/.
     </text-m>
 </body>
 </html>
