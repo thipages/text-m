@@ -1,10 +1,11 @@
-import { SLASH, evilChars, testmRegExp, tlsElementsSupported, tlsAttributes } from "./const.js"
+import { SLASH, PIPE, evilChars, testmRegExp, tlsElementsSupported, tlsAttributes } from "./const.js"
+import {escape} from "html-escaper"
 export default (input, options={ wrapElement:'p'}) => {
     const {wrapElement} = options
-    const _ = input
-        .replace(evilChars, '')
-        .replace(/</g, '&lt;')
-        .replace(/\\\//g, '\x010')
+    const _ = escape(input)
+        .replace(evilChars, '')     // clean evils
+        .replace(/\\\//g, '\x010')  // reserve escaped slash
+        .replace(/\\\|/g, '\x012')  // reserve escaped pipe
         .replace(testmRegExp, function(original, element, $2, cssClass, $4, attributes, text) {
             let attrs
             if (tlsElementsSupported.includes(element)) {
@@ -14,24 +15,14 @@ export default (input, options={ wrapElement:'p'}) => {
                 ].join(' ').trim()
                 
             }
-            // Removed -> Keep text-m simple and do not allow custom-elements -> mark-m
-            /*else if (
-                element.length > 1 &&
-                element.substr(1).includes('-') &&
-                !text
-            ) {
-                // Thats may be a defined custom-element
-                attrs = [ 
-                    cssClass ? `class="${cssClass}"` : '',
-                    ...getHtmlAttributes(element, attributes, '\x011')
-                ].join(' ').trim()
-            }*/
             return attrs !== undefined
                 ? `<${element} ${attrs}>${text}</${element}>`
                 : original
         })
         .replace(/\x010/g, SLASH)
-        .replace(/\x011/g, ',')
+        .replace(/\x012/g, PIPE)
+        .replace(/\x011/g, ',')   // resume comma (in attributes)
+
     return addParagraphs(normalizeNewlines(_), wrapElement)
 }
 function getHtmlAttributes(element, attributes, evilChar) {
@@ -62,7 +53,6 @@ function getHtmlAttributes(element, attributes, evilChar) {
     return html
 }
 function normalizeNewlines(input) {
-    
     return input
         .replace(/^\s*\n*/, '') // remove top newlines
         .replace(/\s*\n*$/, '') // remove end newlines

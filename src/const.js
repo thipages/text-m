@@ -17,3 +17,4 @@ export const evilChars = /\x01(\d)/g
 // "/(element)?.(class)??[attributes]?:text/"
 export const testmRegExp = /\|([a-z][a-z0-9]*)(\.([^\[\/]*)){0,1}(\[(.*)\]){0,1}\/([^\/]+)\//gi
 export const SLASH = '&#x2F;'
+export const PIPE = '&#124;'

@@ -24,6 +24,7 @@
     "@rollup/plugin-terser": "^0.4.4"
   },
   "dependencies": {
+    "html-escaper": "^3.0.3",
     "html-parsed-element": "^0.4.1"
   }
 }
