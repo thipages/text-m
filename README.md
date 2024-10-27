@@ -52,13 +52,13 @@ transformed to
 
 ## Shortcuts attributes
 Three elements support shortcuts attributes
-- a (href, target): `|a[mysite.com _blank]/link text/`
-- abbr (text): `|abbr[abbreviation description]/abbreviation/`
-- dfn (text): `|dfn[definition description]/definition/`
+- a[href target]: `|a[mysite.com _blank]/link text/`
+- abbr[text]: `|abbr[abbreviation description]/abbreviation/`
+- dfn[text]: `|dfn[definition description]/definition/`
 
 ## Named attributes
 
-Named attributes are written like regular HTML attributes with quotes
+Named attributes are written as regular HTML attributes with quotes
 
 `|a[href="mysite.com" target="_blank"]/link text/`
 
