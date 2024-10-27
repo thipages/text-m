@@ -1,6 +1,6 @@
 {
-  "name": "@thipages/text-m",
-  "version": "0.2.0",
+  "name": "@titsoft/text-m",
+  "version": "0.3.0",
   "description": "custom-element for inline Text-level semantics",
   "main": "src/index.js",
   "keywords": ["text-level semantics", "custom-elements", "inine"],
