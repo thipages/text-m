@@ -41,6 +41,16 @@ transformed to
     <p>I must say I <em>adore</em> lemonade.</p>
     <p>I must say I <em>dislike</em> celery.</p>
 ```
+## Installation
+
+`npm i @thipages/text-m`
+
+```javascript
+// Create text-m custom-element
+import {} from '@thipages/text-m'
+// Access to text-m renderer
+import {render} from '@thipages/text-m/render'
+```
 
 ## Supported elements
 
