@@ -1,7 +1,7 @@
 # text-m
 
 `text-m` is a `block` custom-element for text content
-- using a special syntax for (inline) *Text-level semantic* elements,
+- using a special syntax for (inline) [Text-level semantic elements](https://html.spec.whatwg.org/multipage/text-level-semantics.html),
 - wrapping the content in one or more paragraphs (`P` tag) elements,
 - allowing `text-m` to be replaced by its children using the boolean `level-up` attribute.
 

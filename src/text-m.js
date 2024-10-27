@@ -1,4 +1,4 @@
-import render from './render.js'
+import render from './render/index.js'
 import HTMLParsedElement from 'html-parsed-element'
 customElements.define(
     'text-m', class extends HTMLParsedElement {

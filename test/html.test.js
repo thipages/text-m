@@ -1,7 +1,7 @@
 import assert from 'node:assert'
 import {test, describe} from 'node:test'
 import { htmlTests } from "./tests-list.js";
-import render from './../src/render.js'
+import render from '../src/render/index.js'
 
 describe('test-m html tests', () => {
     for (const htmlTest of htmlTests) {

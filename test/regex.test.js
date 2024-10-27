@@ -1,4 +1,4 @@
-import { testmRegExp } from "../src/const.js"
+import { testmRegExp } from "../src/render/const.js"
 import assert from 'node:assert'
 import {test, describe} from 'node:test'
 import { regexTests, regexTestsExpected } from "./tests-list.js";

@@ -14,7 +14,7 @@ export default (input, options={ wrapElement:'p'}) => {
                     ? htmlAttributes
                     : [
                         cssClass ? `class="${cssClass}"` : '',
-                        getHtmlAttributes(element, attributes)
+                        htmlAttributes
                       ].join(' ').trim()
                 const sAttr = attrs ==='' ? '' : ' ' + attrs
                 return `<${element}${sAttr}>${text}</${element}>`
