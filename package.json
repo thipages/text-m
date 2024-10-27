@@ -1,6 +1,6 @@
 {
   "name": "@thipages/text-m",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "custom-element for inline Text-level semantics",
   "main": "src/index.js",
   "keywords": ["text-level semantics", "custom-elements", "inine"],
@@ -9,7 +9,7 @@
       "import": "./src/index.js"
     },
     "./render": {
-      "import": "./render/index.js"
+      "import": "./src/render/index.js"
     }
   },
   "type": "module",

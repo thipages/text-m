@@ -182,3 +182,5 @@ function define(options) {
 }
 
 define({render});
+
+export { define };
