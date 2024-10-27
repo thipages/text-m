@@ -4,13 +4,14 @@ const tlsElementsSupported = [
     'dfn', 'abbr', 'code', 'var', 'samp', 'kbd',
     'sub', 'sup', 'i', 'b', 'u', 'mark', 'span'
 ];
+// properties are made of [delimiter, ... attributes]
 const tlsAttributes = {
-    a: ['href', 'target'],
-    abbr: ['title'],
-    dfn: ['title']
+    a: [' ', 'href', 'target'],
+    abbr: [, 'title'],
+    dfn: [, 'title']
 };
 const evilChars = /\x01(\d)/g;
-// "/(element)?.(class)??[attributes]?:text/"
+// pattern : |element[.class][[attributes]]/text/
 const testmRegExp = /\|([a-z][a-z0-9]*)(\.([^\[\/]*)){0,1}(\[(.*)\]){0,1}\/([^\/]+)\//gi;
 const SLASH = '&#x2F;';
 const PIPE = '&#124;';
@@ -50,13 +51,14 @@ function getHtmlAttributes(element, attributes) {
         return attributes
     } else {
         // shortcut attribute for a small set of elements
-        const attrs = tlsAttributes[element];
+        const [delimiter, ...attrs] = tlsAttributes[element];
         // Check for a supported TLS element attribute
         if (attrs) {
             const values = attributes
                 .trim()
                 .replace(/\s{2,}/g, ' ')
-                .split(' ');
+                // DEV: string.split(undefined) gives [string]
+                .split(delimiter);
                 return attrs.map (
                     (attr, index) => values[index] ? `${attr}="${values[index]}"` : null
                 )
@@ -162,17 +164,21 @@ const HTMLParsedElement = (() => {
   return HTMLParsedElement.withParsedCallback(HTMLParsedElement);
 })();
 
-customElements.define(
-    'text-m', class extends HTMLParsedElement {
-        constructor() { super(); }
-        connectedCallback() {
-            this.innerHTML = render(this.textContent);
-            // DEV: need to add setTimeout otherwise the node dies with its children
-            if (this.hasAttribute('level-up')) {
-                setTimeout(() => this.replaceWith(...this.children));
+const def = { name: 'text-m' };
+function define(options) {
+    const {name, render} = Object.assign(options, def);
+    customElements.define(
+        name, class extends HTMLParsedElement {
+            constructor() { super(); }
+            connectedCallback() {
+                this.innerHTML = render(this.textContent);
+                // DEV: need to add setTimeout otherwise the node dies with its children
+                if (this.hasAttribute('level-up')) {
+                    setTimeout(() => this.replaceWith(...this.children));
+                }
             }
         }
-    }
-);
+    );
+}
 
-export { render };
+define({render});

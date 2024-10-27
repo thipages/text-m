@@ -1,3 +1,3 @@
 import render from "./render/index.js"
-import {} from './text-m.js'
-export {render}
+import {define} from './text-m.js'
+define({render})

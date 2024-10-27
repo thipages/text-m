@@ -34,13 +34,14 @@ function getHtmlAttributes(element, attributes) {
         return attributes
     } else {
         // shortcut attribute for a small set of elements
-        const attrs = tlsAttributes[element]
+        const [delimiter, ...attrs] = tlsAttributes[element]
         // Check for a supported TLS element attribute
         if (attrs) {
             const values = attributes
                 .trim()
                 .replace(/\s{2,}/g, ' ')
-                .split(' ')
+                // DEV: string.split(undefined) gives [string]
+                .split(delimiter)
                 return attrs.map (
                     (attr, index) => values[index] ? `${attr}="${values[index]}"` : null
                 )

@@ -9,7 +9,7 @@
 
 - minimal: `|em/emphasis/`
 - with class: `|em.red/emphasis/`
-- with shortcuts attributes: `|a[mysite.com _blank]/link text/` (blank delimiter)
+- with shortcuts attributes: `|a[mysite.com _blank]/link text/` (space delimiter)
 - with named attributes: `|a[href="mysite.com" target="_blank"]/link text/`(as regular attributes)
 - class and attributes can be mixed: `|a.red[mysite.com]/link text/` 
 
@@ -51,16 +51,23 @@ transformed to
 `ruby`, `rt`, `rp`, `data`, `time`,`bdo`, `bdi`, `br`, `wbr`
 
 ## Shortcuts attributes
-Three elements support shortcuts attributes
+Three elements support shortcuts attributes (order is important, second argument is optional, `a` attributes are space delimited)
 - a[href target]: `|a[mysite.com _blank]/link text/`
 - abbr[text]: `|abbr[abbreviation description]/abbreviation/`
 - dfn[text]: `|dfn[definition description]/definition/`
 
 ## Named attributes
 
-Named attributes are written as regular HTML attributes with quotes
+- Named attributes are written as regular HTML attributes with quotes.
 
 `|a[href="mysite.com" target="_blank"]/link text/`
+
+- Named class attribute has precedence over the element modifier syntax (eg `em.red`)
+
+`em.red[class="blue"]/Hello/`
+
+
+
 
 
 

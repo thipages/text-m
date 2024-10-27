@@ -19,8 +19,8 @@ export const regexTests = [
 export const htmlTests = [
     ['1 and 2 newlines', 'before|em/text/after\n\n|em/text/\nafter2', ,'<p>before<em>text</em>after</p>\n<p><em>text</em>\nafter2</p>'], 
     ['"a" element with shortcuts attributes', '|a[google.com _blank]/Hello/', , '<p><a href="google.com" target="_blank">Hello</a></p>'],
-    ['"abbr" element with escaped comma', '|abbr[abbreviation]/Hello/', , '<p><abbr title="abbreviation">Hello</abbr></p>'],
+    ['"abbr" element with spaced title', '|abbr[abbreviation with spaces]/Hello/', , '<p><abbr title="abbreviation with spaces">Hello</abbr></p>'],
     ['"a" element with attributes', '|a[href="google.com" target="_blank"]/Hello/', , '<p><a href="google.com" target="_blank">Hello</a></p>'],
-    ['class defined twice', '|em.red[class="blue"]/Hello/', , '<p><em class="blue">Hello</em></p>'],
+    ['class defined twice', '|em.red[class="blue bordered"]/Hello/', , '<p><em class="blue bordered">Hello</em></p>'],
     ... regexTests
 ]
