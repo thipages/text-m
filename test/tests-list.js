@@ -21,5 +21,6 @@ export const htmlTests = [
     ['"a" element with shortcuts attributes', '|a[google.com _blank]/Hello/', , '<p><a href="google.com" target="_blank">Hello</a></p>'],
     ['"abbr" element with escaped comma', '|abbr[abbreviation]/Hello/', , '<p><abbr title="abbreviation">Hello</abbr></p>'],
     ['"a" element with attributes', '|a[href="google.com" target="_blank"]/Hello/', , '<p><a href="google.com" target="_blank">Hello</a></p>'],
+    ['class defined twice', '|em.red[class="blue"]/Hello/', , '<p><em class="blue">Hello</em></p>'],
     ... regexTests
 ]

@@ -7,16 +7,20 @@ export default (input, options={ wrapElement:'p'}) => {
         .replace(/\\\//g, '\x010')  // reserve escaped slash
         .replace(/\\\|/g, '\x011')  // reserve escaped pipe
         .replace(testmRegExp, function(original, element, $2, cssClass, $4, attributes, text) {
-            const attrs = tlsElementsSupported.includes(element)
-                ? [ 
+            if (tlsElementsSupported.includes(element)) {
+                const htmlAttributes = getHtmlAttributes(element, attributes)
+                const hasClass = /class\s*="/.test(htmlAttributes)
+                const attrs = hasClass
+                    ? htmlAttributes
+                    : [
                         cssClass ? `class="${cssClass}"` : '',
                         getHtmlAttributes(element, attributes)
-                  ].join(' ').trim()
-                : null
-            const sAttr = attrs ==='' ? '' : ' ' + attrs
-            return attrs !== null
-                ? `<${element}${sAttr}>${text}</${element}>`
-                : original
+                      ].join(' ').trim()
+                const sAttr = attrs ==='' ? '' : ' ' + attrs
+                return `<${element}${sAttr}>${text}</${element}>`
+            } else {
+                return original
+            }
         })
         .replace(/\x010/g, SLASH)
         .replace(/\x011/g, PIPE)
