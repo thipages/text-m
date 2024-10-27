@@ -43,13 +43,13 @@ transformed to
 ```
 ## Installation
 
-`npm i @thipages/text-m`
+`npm i @titsoft/text-m`
 
 ```javascript
 // Create text-m custom-element
-import {} from '@thipages/text-m'
+import {} from '@titsoft/text-m'
 // Access to text-m renderer
-import {render} from '@thipages/text-m/render'
+import {render} from '@titsoft/text-m/render'
 ```
 
 ## Supported elements
