@@ -8,6 +8,7 @@
   },
   "type": "module",
   "scripts": {
+    "test": "node --test",
     "build": "npm run rollup:esm_min && npm run rollup:esm && npm run rollup:esm_watch",
     "rollup:esm_min": "rollup --config rollup/rollup.config_esm_min.js",
     "rollup:esm": "rollup --config rollup/rollup.config_esm.js",
@@ -24,7 +25,6 @@
     "@rollup/plugin-terser": "^0.4.4"
   },
   "dependencies": {
-    "html-escaper": "^3.0.3",
     "html-parsed-element": "^0.4.1"
   }
 }
