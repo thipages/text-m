@@ -24,3 +24,7 @@ export const htmlTests = [
     ['class defined twice', '|em.red[class="blue bordered"]/Hello/', , '<p><em class="blue bordered">Hello</em></p>'],
     ... regexTests
 ]
+export const htmlTests_wrapOneChild = [
+    ['OneWrap option - one paragraph', '|em/text/', ,'<em>text</em>'], 
+    ['OneWrap option - multiple paragraphs', '|em/text1/\n\n|em/text2/', ,'<p><em>text1</em></p>\n<p><em>text2</em></p>']
+]

@@ -48,8 +48,10 @@ transformed to
 ```javascript
 // Create text-m custom-element
 import {} from '@titsoft/text-m'
-// Access to text-m renderer
+//  + access to text-m renderer
 import {render} from '@titsoft/text-m/render'
+render(input, options) // default: options = {wrapOne: true}
+// wrapOne : wrap or not with P tag if there is only one paragraph
 ```
 
 ## Supported elements

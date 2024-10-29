@@ -1,6 +1,7 @@
 import { SLASH, PIPE, evilChars, testmRegExp, tlsElementsSupported, tlsAttributes } from "./const.js"
-export default (input, options={ wrapElement:'p'}) => {
-    const {wrapElement} = options
+const defaultOptions = { wrapOne: true}
+export default (input, options = {}) => {
+    const {wrapOne} = Object.assign({}, defaultOptions, options)
     const _ = input
         .replace ('<', '&lt;')
         .replace(evilChars, '')     // clean placeholders
@@ -25,7 +26,7 @@ export default (input, options={ wrapElement:'p'}) => {
         .replace(/\x010/g, SLASH)
         .replace(/\x011/g, PIPE)
 
-    return addParagraphs(normalizeNewlines(_), wrapElement)
+    return addParagraphs(normalizeNewlines(_), wrapOne)
 }
 function getHtmlAttributes(element, attributes) {
     if (!attributes) return ''
@@ -59,11 +60,11 @@ function normalizeNewlines(input) {
         .replace(/\n+$/, '') // remove end newlines
         .replace(/\n{3,}/g, '\n\n') // down to 2 newlines for paragraphs
 }
-function addParagraphs(input, wrapElement ) {
+function addParagraphs(input, wrapOneChild ) {
     const s = input.split('\n\n')
-    return wrapElement
-        ? s.map(v => wrap(v, wrapElement)).join('\n')
-        : input
+    return (s.length === 1 && !wrapOneChild)
+        ? input
+        : s.map(v => wrap(v, 'p')).join('\n')
 }
 function wrap(content, el) {
     return `<${el}>${content}</${el}>`
