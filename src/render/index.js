@@ -54,10 +54,10 @@ function getHtmlAttributes(element, attributes) {
 }
 function normalizeNewlines(input) {
     return input
-        .replace(/^\s*\n*/, '') // remove top newlines
-        .replace(/\s*\n*$/, '') // remove end newlines
         .replace(/^\s*\n/gm, '\n') // clean newlines
-        .replace(/\n{3,}/g, '\n\n') // down to 2 newlines
+        .replace(/^\n+/, '') // remove top newlines
+        .replace(/\n+$/, '') // remove end newlines
+        .replace(/\n{3,}/g, '\n\n') // down to 2 newlines for paragraphs
 }
 function addParagraphs(input, wrapElement ) {
     const s = input.split('\n\n')

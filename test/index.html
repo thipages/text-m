@@ -10,10 +10,16 @@
     ></script>
     <script type="module" src="./../src/index.js"></script>
     <style>
+        body {
+            display:none;
+        }
         .blue {color:blue;}
         .orange {color:orange;}
         .container {display:flex;gap:1rem;}
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=> document.body.style.display='')
+    </script>
 </head>
 <body>
     <text-m class="container">
