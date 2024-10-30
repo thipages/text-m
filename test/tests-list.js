@@ -22,6 +22,7 @@ export const htmlTests = [
     ['"abbr" element with spaced title', '|abbr[abbreviation with spaces]/Hello/', , '<p><abbr title="abbreviation with spaces">Hello</abbr></p>'],
     ['"a" element with attributes', '|a[href="google.com" target="_blank"]/Hello/', , '<p><a href="google.com" target="_blank">Hello</a></p>'],
     ['class defined twice', '|em.red[class="blue bordered"]/Hello/', , '<p><em class="blue bordered">Hello</em></p>'],
+    ['text trimmed', '|em/Hello/|em/  tit/', , '<p><em>Hello</em><em>tit</em></p>'],
     ... regexTests
 ]
 export const htmlTests_wrapOneChild = [

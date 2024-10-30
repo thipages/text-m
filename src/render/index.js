@@ -18,7 +18,7 @@ export default (input, options = {}) => {
                         htmlAttributes
                       ].join(' ').trim()
                 const sAttr = attrs ==='' ? '' : ' ' + attrs
-                return `<${element}${sAttr}>${text}</${element}>`
+                return `<${element}${sAttr}>${text.trim()}</${element}>`
             } else {
                 return original
             }
@@ -63,9 +63,9 @@ function normalizeNewlines(input) {
 function addParagraphs(input, wrapOneChild ) {
     const s = input.split('\n\n')
     return (s.length === 1 && !wrapOneChild)
-        ? input
+        ? input.trim()
         : s.map(v => wrap(v, 'p')).join('\n')
 }
-function wrap(content, el) {
-    return `<${el}>${content}</${el}>`
+function wrap(content, el, attributes) {
+    return `<${el}>${content.trim()}</${el}>`
 }
