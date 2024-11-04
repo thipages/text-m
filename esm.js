@@ -165,18 +165,44 @@ const HTMLParsedElement = (() => {
   return HTMLParsedElement.withParsedCallback(HTMLParsedElement);
 })();
 
+const isAsyncFunction = fn => fn.constructor.name === 'AsyncFunction';
+const replace = (that) => {
+    if (that.hasAttribute('level-up')) {
+        that.replaceWith(...that.children);
+    }
+};
+class MElement extends HTMLParsedElement {
+    #config
+    constructor(config = {}) {
+        super();
+        this.#config = config;
+    }
+    connectedCallback() {
+        if (this.parsed && this.#config.oneConnect) return
+        super.connectedCallback();
+    }
+    parsedCallback() {
+        if (this.init) {
+            if (isAsyncFunction(this.init)) {
+                this.init().then (
+                    () => replace(this)
+                );
+            } else {
+                this.init();
+                replace(this);
+            } 
+        }                   
+    }
+}
+
 const def = { name: 'text-m' };
 function define(options) {
     const {name, render} = Object.assign(options, def);
     customElements.define(
-        name, class extends HTMLParsedElement {
+        name, class extends MElement {
             constructor() { super(); }
-            connectedCallback() {
+            init() {
                 this.innerHTML = render(this.textContent);
-                // DEV: need to add setTimeout otherwise the node dies with its children
-                if (this.hasAttribute('level-up')) {
-                    setTimeout(() => this.replaceWith(...this.children));
-                }
             }
         }
     );
