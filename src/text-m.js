@@ -1,16 +1,12 @@
-import HTMLParsedElement from 'html-parsed-element'
+import MElement from '@titsoft/m-element'
 const def = { name: 'text-m' }
 export function define(options) {
     const {name, render} = Object.assign(options, def)
     customElements.define(
-        name, class extends HTMLParsedElement {
+        name, class extends MElement {
             constructor() { super() }
-            connectedCallback() {
+            init() {
                 this.innerHTML = render(this.textContent)
-                // DEV: need to add setTimeout otherwise the node dies with its children
-                if (this.hasAttribute('level-up')) {
-                    setTimeout(() => this.replaceWith(...this.children))
-                }
             }
         }
     )
