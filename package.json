@@ -1,6 +1,6 @@
 {
   "name": "@titsoft/text-m",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "custom-element for inline Text-level semantics",
   "main": "src/index.js",
   "keywords": [
@@ -35,6 +35,6 @@
     "@rollup/plugin-terser": "^0.4.4"
   },
   "dependencies": {
-    "@titsoft/m-element": "^0.5.1"
+    "@titsoft/m-element": "^0.8.0"
   }
 }
